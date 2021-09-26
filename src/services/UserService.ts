@@ -1,7 +1,8 @@
 import userRepository  from "../repositories/UserRepository"; 
+import { UserDTO, UserLoginDTO } from "../dtos/UserDTO";
 
 export default class UserService {
-    public async create(data: String): Promise<String> {
+    public async create(data: UserDTO): Promise<String> {
         try {
             return await userRepository.create(data);
         } catch (error) {
@@ -9,7 +10,7 @@ export default class UserService {
         }
     }
 
-    public async login(data: any): Promise<boolean> {
+    public async login(data: UserLoginDTO): Promise<boolean> {
         try {
             const user = await userRepository.login(data);
             

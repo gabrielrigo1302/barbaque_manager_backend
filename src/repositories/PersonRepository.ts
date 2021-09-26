@@ -1,6 +1,7 @@
 import connection from '../database/connection';
+import { PersonDTO } from '../dtos/PersonDTO';
 
-const create = async(data: any) => {
+const create = async(data: PersonDTO) => {
     try {
         const response = await connection('person').insert(data);
         return response;
@@ -9,7 +10,7 @@ const create = async(data: any) => {
     }
 }
 
-const put = async(id: number, data: any) => {
+const put = async(id: number, data: PersonDTO) => {
     try {
         const response = await connection('person').update(data).where('id', id);
         return response;

@@ -1,4 +1,5 @@
 import repositories from "../repositories/index"
+import { PersonDTO } from "../dtos/PersonDTO";
 
 export default class PersonService {
     public async getAllByBarbequeId(id: number): Promise<String> {
@@ -14,7 +15,7 @@ export default class PersonService {
         }
     }
 
-    public async create(data: any): Promise<String> {
+    public async create(data: PersonDTO): Promise<String> {
         try {
             return await repositories.personRepository.create(data);
         } catch (error) {
@@ -22,7 +23,7 @@ export default class PersonService {
         }
     }
 
-    public async put(id: number, data: any): Promise<String> {
+    public async put(id: number, data: PersonDTO): Promise<String> {
         try {
             return await repositories.personRepository.put(id, data);
         } catch (error) {

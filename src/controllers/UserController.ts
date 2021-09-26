@@ -2,13 +2,38 @@ import {Request, Response} from 'express';
 import services from '../services';
 
 export default class UserController {
-    public async get(request: Request, response: Response): Promise<Response> {
+    public async getAll(request: Request, response: Response): Promise<Response> {
         try {
-            const { id } = request.params;
-
             const userService = new services.UserService();
 
-            const user = await userService.get(id);
+            const user = await userService.getAll();
+            return response.status(200).json({
+                user: user
+            })
+        } catch (error) {
+            return response.status(500).json(error);
+        }
+    }
+
+    public async login(request: Request, response: Response): Promise<Response> {
+        try {
+            const { body } = request;
+            const userService = new services.UserService();
+
+            const successfulLogin = await userService.login(body);
+            return response.status(200).json({
+                successfulLogin
+            })
+        } catch (error) {
+            return response.status(500).json(error);
+        }
+    }
+
+    public async create(request: Request, response: Response): Promise<Response> {
+        try {
+            const userService = new services.UserService();
+
+            const user = await userService.create(request.body);
             return response.status(200).json({
                 user: user
             })

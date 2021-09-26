@@ -1,16 +1,14 @@
 import {Request, Response} from 'express'; 
 import services from '../services';
 
-export default class PersonController {
-    public async getAllByBarbequeId(request: Request, response: Response): Promise<Response> {
+export default class foodController {
+    public async getAll(request: Request, response: Response): Promise<Response> {
         try {
-            const { id } = request.params;
+            const foodService = new services.FoodService()
 
-            const personService = new services.PersonService()
-
-            const person = await personService.getAllByBarbequeId(Number(id));
+            const food = await foodService.getAll();
             return response.status(200).json({
-                person: person 
+                food: food 
             })
         } catch (error) {
             return response.status(500).json(error);
@@ -19,11 +17,11 @@ export default class PersonController {
 
     public async create(request: Request, response: Response): Promise<Response> {
         try {
-            const personService = new services.PersonService()
+            const foodService = new services.FoodService()
 
-            const person = await personService.create(request.body);
+            const food = await foodService.create(request.body);
             return response.status(200).json({
-                person: person 
+                food: food 
             })
         } catch (error) {
             return response.status(500).json(error);
@@ -33,25 +31,25 @@ export default class PersonController {
     public async put(request: Request, response: Response): Promise<Response> {
         try {
             const { id } = request.params;
-            const personService = new services.PersonService()
+            const foodService = new services.FoodService()
 
-            const person = await personService.put(Number(id), request.body);
+            const food = await foodService.put(Number(id), request.body);
             return response.status(200).json({
-                person: person 
+                food: food 
             })
         } catch (error) {
             return response.status(500).json(error);
         }
     }
 
-    public async deletePerson(request: Request, response: Response): Promise<Response> {
+    public async deleteFood(request: Request, response: Response): Promise<Response> {
         try {
             const { id } = request.params;
-            const personService = new services.PersonService()
+            const foodService = new services.FoodService()
 
-            const person = await personService.deletePerson(Number(id));
+            const food = await foodService.deleteFood(Number(id));
             return response.status(200).json({
-                person: person 
+                food: food 
             })
         } catch (error) {
             return response.status(500).json(error);

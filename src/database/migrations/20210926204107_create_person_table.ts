@@ -8,6 +8,7 @@ export async function up(knex: Knex): Promise<void> {
         table.integer('barbequeId').references('barbeque.id');
         table.string('name', 100).notNullable();
         table.boolean('isPaid').notNullable().defaultTo(false);
+        table.boolean('willDrink').notNullable().defaultTo(false);
         table.float('coust');
     })
 }

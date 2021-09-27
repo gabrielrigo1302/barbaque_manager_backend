@@ -14,10 +14,6 @@ export default class BarbequeService {
         try {
             const user = await repositories.barbequeRepository.getAllByUserId(id);
             
-            if (user.length === 0) {
-                throw('a');
-            } 
-            
             return user;
         } catch (error) {
             throw(error);

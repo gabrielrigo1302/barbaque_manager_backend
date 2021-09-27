@@ -20,9 +20,9 @@ export default class UserController {
             const { body } = request;
             const userService = new services.UserService();
 
-            const successfulLogin = await userService.login(body);
+            const userId = await userService.login(body);
             return response.status(200).json({
-                successfulLogin
+                userId
             })
         } catch (error) {
             return response.status(500).json(error);

@@ -13,12 +13,8 @@ export default class UserService {
     public async login(data: UserLoginDTO): Promise<boolean> {
         try {
             const user = await userRepository.login(data);
-            
-            if (user.length === 0) {
-                throw('a');
-            } 
 
-            return true;
+            return user.length > 0 ? user[0].id : null;
         } catch (error) {
             throw(error);
         }

@@ -6,8 +6,7 @@ const create = async(data: UserDTO) => {
         const response = await connection('user').insert(data);
         return response;
     } catch (error) {
-
-        console.log(`error  ==== ${error}`)
+        console.log("error === ", error)
         return error;
     }
 }
@@ -17,6 +16,7 @@ const getAll = async() => {
         const response = await connection('user').select();
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }
@@ -29,6 +29,7 @@ const login = async(data: UserLoginDTO) => {
         });
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }

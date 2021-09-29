@@ -6,6 +6,7 @@ const create = async(data: PersonDTO) => {
         const response = await connection('person').insert(data);
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }
@@ -15,6 +16,7 @@ const put = async(id: number, data: PersonDTO) => {
         const response = await connection('person').update(data).where('id', id);
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }
@@ -24,6 +26,7 @@ const getAllByBarbequeId = async(id: number) => {
         const response = await connection('person').select().where('barbequeId', id);
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }
@@ -33,6 +36,7 @@ const deletePerson = async(id: number) => {
         const response = await connection('person').delete().where('id', id);
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }

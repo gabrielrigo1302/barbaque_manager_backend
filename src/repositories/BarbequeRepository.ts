@@ -6,6 +6,7 @@ const create = async(data: BarbequeDTO) => {
         const response = await connection('barbeque').insert(data);
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }
@@ -15,6 +16,7 @@ const put = async(id: number, data: BarbequeDTO) => {
         const response = await connection('barbeque').update(data).where('id', id);
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }
@@ -25,6 +27,7 @@ const getAll = async() => {
         const response = await connection('barbeque').select();
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }
@@ -34,6 +37,7 @@ const getAllByUserId = async(id: number) => {
         const response = await connection('barbeque').select().where('userId', id);
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }
@@ -43,6 +47,7 @@ const deleteBarbeque = async(id: number) => {
         const response = await connection('barbeque').delete().where('id', id);
         return response;
     } catch (error) {
+        console.log("error === ", error)
         return error;
     }
 }

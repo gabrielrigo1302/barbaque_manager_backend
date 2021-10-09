@@ -2,7 +2,6 @@ import express = require('express');
 import routes from './routes/index';
 const cors = require('cors');
 
-
 const port = 8000;
 const app = express();
 

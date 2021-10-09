@@ -38,6 +38,7 @@ export default class BarbequeService {
 
     public async deleteBarbeque(id: number): Promise<String> {
         try {
+            await repositories.personRepository.deletePersonByBarbequeId(id);
             return await repositories.barbequeRepository.deleteBarbeque(id);
         } catch (error) {
             throw(error);

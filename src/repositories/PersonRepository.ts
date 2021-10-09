@@ -41,9 +41,20 @@ const deletePerson = async(id: number) => {
     }
 }
 
+const deletePersonByBarbequeId = async(id: number) => {
+    try {
+        const response = await connection('person').delete().where('barbequeId', id);
+        return response;
+    } catch (error) {
+        console.log("error === ", error)
+        return error;
+    }
+}
+
 export default {
     create,
     getAllByBarbequeId,
     put,
-    deletePerson
+    deletePerson,
+    deletePersonByBarbequeId
 };

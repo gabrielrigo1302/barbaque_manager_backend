@@ -1,5 +1,4 @@
-import {Request, Response} from 'express'; 
-import services from '../services';
+import {Request, Response} from 'express';
 
 export default class espController {
     public async getAll(_request: Request, response: Response): Promise<Response> {
